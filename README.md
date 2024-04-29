@@ -3,7 +3,5 @@ Snakemake implementation for genome alignment and coverage statistics analysis. 
 
 Download:
 ```
-function test() {
-  console.log("git clone --recursive https://github.com/Iseez/SnakeAlign.git");
-}
+git clone --recursive https://github.com/Iseez/SnakeAlign.git"
 ```
