@@ -1,0 +1,12 @@
+__default__:
+  M: 'iesedeno@gmail.com'
+  N: 'rule_{rule}.{wildcards}'
+  l: 'vf=4G'
+  q: 'all.q@compute-00-12.cm'
+  pe: 'openmp 4'
+  mem: '6G'
+  m: 'a'
+  r: 'n'
+  e: 'st/log-{rule}.{wildcards}.err'
+  o: 'st/log-{rule}.{wildcards}.out'
+  S: '/bin/bash'

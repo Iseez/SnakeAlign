@@ -43,7 +43,7 @@ rule align:
         bam = f"data/{{sample}}/bam/{{sample}}_{reference_name}.bam"
     shell:
         """
-        module load bwa/0.7.4 htslib/1.2.1 gcc/5.1.0 samtools/1.9
+        module load bwa/0.7.4 htslib/1.2.1 gcc/5.1.0 samtools/1.10
         bwa mem -M -t {params.threads} {input.ref} {input.r1} {input.r2} | samtools view -hbS - \
             | samtools sort -o {output.bam} -
         """
@@ -98,7 +98,7 @@ rule depth:
         qual = quality
     shell:
         """
-        module load htslib/1.2.1 gcc/5.1.0 samtools/1.9
+        module load htslib/1.2.1 gcc/5.1.0 samtools/1.10
         samtools depth -aa -Q {params.qual} {input.bam} > {output.dp_file}
         """
 
