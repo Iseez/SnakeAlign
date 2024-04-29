@@ -1,0 +1,37 @@
+# Pipeline parameters
+
+#Fasta with the reference.
+reference_file: "/mnt/Timina/lmorales/Public/ymez/data/ref/SACE_S288C_v1/fasta/SACE_S288C_v1_allChr.fasta"
+
+#Reference name.
+reference_name: "SACE_S288C"
+
+#Sequencing platform for picard
+platform: "illumina"
+
+#Quality for depth assesment
+quality: 30
+
+#Parameters for plot making. SIZE is the window size, STEP is the step size
+size: 1000
+step: 1000
+
+#Samples to align
+samples:
+  - LRM_24_1_S1_L001
+  - LRM_24_2_S2_L001
+  - LRM_24_3_S3_L001
+  - LRM_24_4_S4_L001
+  - LRM_24_5_S5_L001
+  - LRM_24_6_S6_L001
+  - LRM_24_7_S7_L001
+  - LRM_24_8_S8_L001
+  - LRM_24_9_S9_L001
+  - LRM_24_10_S10_L001
+  - LRM_24_11_S11_L001
+  - LRM_24_12_S12_L001
+  - LRM_24_13_S13_L001
+  - LRM_24_14_S14_L001
+  - LRM_24_15_S15_L001
+  - LRM_24_16_S16_L001
+  - LRM_24_17_S17_L001
