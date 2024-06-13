@@ -1,5 +1,5 @@
 __default__:
-  M: 'iesedeno@gmail.com'
+  M: 'your@email.com'
   N: 'rule_{rule}.{wildcards}'
   l: 'vf=4G'
   q: 'all.q@compute-00-12.cm'

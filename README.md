@@ -4,11 +4,10 @@ Currently only works with pair end sequencing data.
 ** This pipeline was thought for S. cerevisiae thus, the 2m sequence analysis.
 
 ## **Download:**
----
+
 ```
 git clone --recursive https://github.com/Iseez/SnakeAlign.git
 ```
----
 
 ## **Content:**
 ```
@@ -29,17 +28,17 @@ git clone --recursive https://github.com/Iseez/SnakeAlign.git
   - FASTQs shouldn't be compressed and should be named as  *Sample1*\_R1.fatsq and *Sample1*\_R2.fatsq
 - `scripts`: scripts
 - `Snakefile`: Snakemake worflow
----
+
 ## **Dependencies:**
 - [Bwa](https://bio-bwa.sourceforge.net)
 - [Samtools](http://www.htslib.org)
 - [Fastp](http://www.htslib.org)
 - [Picard](https://broadinstitute.github.io/picard/)
 - [R](https://www.r-project.org)
-  - ggplot2
-  - data.table
-  - zoo
----
+  - [ggplot2](https://ggplot2.tidyverse.org)
+  - [data.table](https://rdatatable.gitlab.io/data.table/)
+  - [zoo](https://cran.r-project.org/web/packages/zoo/index.html)
+
 ## **Usage:**
 #### **Before starting**
 
@@ -71,12 +70,30 @@ samples:
   - Sample2
 
 ```  
-
-
-**Run `Snakefile`**
-To run the 
+**Edit `cluster.yaml`:**
+```YAML
+__default__:
+  M: 'your@email.com'
+  N: 'rule_{rule}.{wildcards}'
+  l: 'vf=4G'
+  q: 'all.q@compute-00-12.cm'
+  pe: 'openmp 4'
+  mem: '6G'
+  m: 'a'
+  r: 'n'
+  e: 'st/log-{rule}.{wildcards}.err'
+  o: 'st/log-{rule}.{wildcards}.out'
+  S: '/bin/bash'
 ```
-snakemake -p --latency-wait 60 --cluster-config cluster.yaml --cluster 'qsub -V -S {cluster.S} -N {cluster.N} -q {cluster.q} -cwd -e {cluster.e} -o {cluster.o}' data/done.txt
-```
+#### **Ready to run**
 
----
+**Run `Snakefile`**  
+To run the pipeline you only need to run the following line:
+```
+snakemake data/done.txt
+
+```
+To run the pipeline on the cluster you first need to run the following:
+```
+snakemake -p --latency-wait 60 --cluster-config cluster.yaml --cluster 'qsub -V -S {cluster.S} -N {cluster.N} -cwd -e {cluster.e} -o {cluster.o} -q {cluster.q} -M {cluster.M} -l {cluster.l} -pe {cluster.pe} -m {cluster.m} -r {cluster.r}' data/done.txt
+```
