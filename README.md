@@ -86,14 +86,17 @@ __default__:
   S: '/bin/bash'
 ```
 #### **Ready to run**
+To use Snakemake the module `python37/3.7.0` should be loaded on your current session of the cluster. Also you should add `r/3.6.1` to the list of modules that autoload (`module initadd r/3.6.1`).  
+\**Other R modules should also work but weren't tested.
 
 **Run `Snakefile`**  
-To run the pipeline you only need to run the following line:
+To run the pipeline you can run the following line:
 ```
 snakemake data/done.txt
 
 ```
-To run the pipeline on the cluster you first need to run the following:
+But to use the full potential of the cluster the following line is recommended:
 ```
-snakemake -p --latency-wait 60 --cluster-config cluster.yaml --cluster 'qsub -V -S {cluster.S} -N {cluster.N} -cwd -e {cluster.e} -o {cluster.o} -q {cluster.q} -M {cluster.M} -l {cluster.l} -pe {cluster.pe} -m {cluster.m} -r {cluster.r}' data/done.txt
+snakemake -p --latency-wait 60 -j 10 --cluster-config cluster.yaml --cluster 'qsub -V -S {cluster.S} -N {cluster.N} -cwd -e {cluster.e} -o {cluster.o} -q {cluster.q} -M {cluster.M} -l {cluster.l} -pe {cluster.pe} -m {cluster.m} -r {cluster.r}' data/done.txt
 ```
+\**In the previous line the -j **10** denotes the maximum amount of samples to be processed at any given time,you should probably leave it in less than 20.
